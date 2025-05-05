@@ -1,0 +1,48 @@
+{
+  "name": "css-materia",
+  "version": "0.1.0",
+  "description": "CSS framework inspired by Material Design principles",
+  "main": "build/css/main.css",
+  "style": "build/css/main.css",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build:css": "sass src/scss:build/css --style compressed",
+    "watch:css": "sass --watch src/scss:build/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrncikla/CSS-Materia.git"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "material",
+    "design",
+    "sass",
+    "html",
+    "responsive",
+    "ui",
+    "storybook"
+  ],
+  "author": "Klára Hrnčířová",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hrncikla/CSS-Materia/issues"
+  },
+  "homepage": "https://github.com/hrncikla/CSS-Materia#readme",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@storybook/addon-essentials": "^8.5.5",
+    "@storybook/addon-interactions": "^8.5.5",
+    "@storybook/blocks": "^8.5.5",
+    "@storybook/html": "^8.5.5",
+    "@storybook/html-vite": "^8.5.5",
+    "@storybook/test": "^8.5.5",
+    "sass": "^1.85.0",
+    "storybook": "^8.5.5"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.3.0"
+  }
+}
