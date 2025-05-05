@@ -1,0 +1,15 @@
+// ==========================================================================================
+// MIXINS CORE - Central mixins entry point                                                 =
+// PURPOSE: Imports all mixins-related modules                                              =
+//                                                                                          =
+// Usage: @use "mixins" in your main SCSS                                                   =
+// Modular: You can also import only specific modules (e.g., only colors or grid)           =
+// ==========================================================================================
+
+
+@use "../tokens/system-tokens" as *;
+
+@use "colors" as *;
+@use "typography" as *;
+@use "grid" as *;
+@use "button" as *;
