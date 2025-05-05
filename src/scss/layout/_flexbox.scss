@@ -1,0 +1,135 @@
+@use "../tokens/system-tokens" as *;
+
+// =============================
+// FLEXBOX Utility Classes
+// =============================
+
+// == Flex display ==
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+// == Flexbox alignment utilities ==
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-center {
+  align-items: center;
+}
+.align-end {
+  align-items: flex-end;
+}
+
+// =============================
+// FLEX GAP utility classes
+// =============================
+.gap-none {
+  gap: $md-sys-flex-gap-none;
+}
+.gap-xsmall {
+  gap: $md-sys-flex-gap-xsmall;
+}
+.gap-small {
+  gap: $md-sys-flex-gap-small;
+}
+.gap-medium {
+  gap: $md-sys-flex-gap-medium;
+}
+.gap-large {
+  gap: $md-sys-flex-gap-large;
+}
+.gap-xlarge {
+  gap: $md-sys-flex-gap-xlarge;
+}
+.gap-2xlarge {
+  gap: $md-sys-flex-gap-2xlarge;
+}
+.gap-3xlarge {
+  gap: $md-sys-flex-gap-3xlarge;
+}
+.gap-4xlarge {
+  gap: $md-sys-flex-gap-4xlarge;
+}
+.gap-5xlarge {
+  gap: $md-sys-flex-gap-5xlarge;
+}
+.gap-default {
+  gap: $md-sys-flex-gap-small;
+}
+
+// =============================
+// EXTRA FLEX utilities
+// =============================
+
+// == Flexbox self-alignment utilities ==
+.self-start {
+  align-self: flex-start;
+}
+.self-center {
+  align-self: center;
+}
+.self-end {
+  align-self: flex-end;
+}
+
+// == Flex grow/shrink/basis utilities ==
+.flex-grow {
+  flex-grow: 1;
+}
+.flex-shrink {
+  flex-shrink: 1;
+}
+.flex-basis-auto {
+  flex-basis: auto;
+}
+
+// == Flex order utilities ==
+.order-0 {
+  order: 0;
+}
+.order-1 {
+  order: 1;
+}
+.order-2 {
+  order: 2;
+}
+.order-3 {
+  order: 3;
+}
+.order-4 {
+  order: 4;
+}
+
+:root {
+  --md-sys-flex-gap-none: #{$md-sys-flex-gap-none};
+  --md-sys-flex-gap-xsmall: #{$md-sys-flex-gap-xsmall};
+  --md-sys-flex-gap-small: #{$md-sys-flex-gap-small};
+  --md-sys-flex-gap-medium: #{$md-sys-flex-gap-medium};
+  --md-sys-flex-gap-large: #{$md-sys-flex-gap-large};
+  --md-sys-flex-gap-xlarge: #{$md-sys-flex-gap-xlarge};
+  --md-sys-flex-gap-2xlarge: #{$md-sys-flex-gap-2xlarge};
+  --md-sys-flex-gap-3xlarge: #{$md-sys-flex-gap-3xlarge};
+  --md-sys-flex-gap-4xlarge: #{$md-sys-flex-gap-4xlarge};
+  --md-sys-flex-gap-5xlarge: #{$md-sys-flex-gap-5xlarge};
+}

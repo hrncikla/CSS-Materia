@@ -1,0 +1,114 @@
+@use "../tokens/system-tokens" as *;
+
+// =============================
+// SPACING UTILITY CLASSES
+// =============================
+
+// == Base spacing sizes ==
+$sizes: (
+    none: $md-sys-space-none,
+    xsmall: $md-sys-space-xsmall,
+    small: $md-sys-space-small,
+    medium: $md-sys-space-medium,
+    large: $md-sys-space-large,
+    xlarge: $md-sys-space-xlarge,
+    2xlarge: $md-sys-space-2xlarge,
+    3xlarge: $md-sys-space-3xlarge,
+    4xlarge: $md-sys-space-4xlarge,
+    5xlarge: $md-sys-space-5xlarge
+);
+
+// =============================
+// PADDING Utility Classes
+// =============================
+
+// == All sides padding ==
+@each $name, $size in $sizes {
+    .p-#{$name} {
+        padding: $size;
+    }
+}
+
+// == Padding per side ==
+@each $name, $size in $sizes {
+    .pt-#{$name} {
+        padding-top: $size;
+    }
+    .pb-#{$name} {
+        padding-bottom: $size;
+    }
+    .pl-#{$name} {
+        padding-left: $size;
+    }
+    .pr-#{$name} {
+        padding-right: $size;
+    }
+}
+
+// == Padding inline and block ==
+@each $name, $size in $sizes {
+    .px-#{$name} {
+        padding-inline: $size;
+    }
+    .py-#{$name} {
+        padding-block: $size;
+    }
+}
+
+// =============================
+// MARGIN Utility Classes
+// =============================
+
+// == All sides margin ==
+@each $name, $size in $sizes {
+    .m-#{$name} {
+        margin: $size;
+    }
+}
+
+// == Margin per side ==
+@each $name, $size in $sizes {
+    .mt-#{$name} {
+        margin-top: $size;
+    }
+    .mb-#{$name} {
+        margin-bottom: $size;
+    }
+    .ml-#{$name} {
+        margin-left: $size;
+    }
+    .mr-#{$name} {
+        margin-right: $size;
+    }
+}
+
+// == Margin inline and block ==
+@each $name, $size in $sizes {
+    .mx-#{$name} {
+        margin-inline: $size;
+    }
+    .my-#{$name} {
+        margin-block: $size;
+    }
+}
+
+:root {
+    --md-sys-space-none: #{$md-sys-space-none};
+    --md-sys-space-xsmall: #{$md-sys-space-xsmall};
+    --md-sys-space-small: #{$md-sys-space-small};
+    --md-sys-space-medium: #{$md-sys-space-medium};
+    --md-sys-space-large: #{$md-sys-space-large};
+    --md-sys-space-xlarge: #{$md-sys-space-xlarge};
+    --md-sys-space-2xlarge: #{$md-sys-space-2xlarge};
+    --md-sys-space-3xlarge: #{$md-sys-space-3xlarge};
+    --md-sys-space-4xlarge: #{$md-sys-space-4xlarge};
+    --md-sys-space-5xlarge: #{$md-sys-space-5xlarge};
+
+    --md-sys-breakpoint-compact: #{$md-sys-breakpoint-compact};
+    --md-sys-breakpoint-medium: #{$md-sys-breakpoint-medium};
+    --md-sys-breakpoint-large: #{$md-sys-breakpoint-large};
+    --md-sys-breakpoint-extended-md: #{$md-sys-breakpoint-extended-md};
+    --md-sys-breakpoint-extended-lg: #{$md-sys-breakpoint-extended-lg};
+    --md-sys-breakpoint-extended-xl: #{$md-sys-breakpoint-extended-xl};
+    --md-sys-breakpoint-extended-2xl: #{$md-sys-breakpoint-extended-2xl};
+}

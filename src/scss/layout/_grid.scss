@@ -1,0 +1,120 @@
+@use "../tokens/system-tokens" as *;
+@use "../mixins/grid" as *;
+
+// =============================
+// GRID Utility Classes
+// =============================
+
+// == Grid columns ==
+.grid {
+  @include grid(1);
+}
+.grid-cols-1 {
+  @include grid(1);
+}
+.grid-cols-2 {
+  @include grid(2);
+}
+.grid-cols-3 {
+  @include grid(3);
+}
+.grid-cols-4 {
+  @include grid(4);
+}
+.grid-cols-5 {
+  @include grid(5);
+}
+.grid-cols-6 {
+  @include grid(6);
+}
+.grid-cols-7 {
+  @include grid(7);
+}
+.grid-cols-8 {
+  @include grid(8);
+}
+.grid-auto {
+  @include grid-auto(200px); // auto-fit columns min-width 200px
+}
+
+// == Grid gap ==
+.grid-gap-none {
+  gap: $md-sys-grid-gap-none;
+}
+.grid-gap-xsmall {
+  gap: $md-sys-grid-gap-xsmall;
+}
+.grid-gap-small {
+  gap: $md-sys-grid-gap-small;
+}
+.grid-gap-medium {
+  gap: $md-sys-grid-gap-medium;
+}
+.grid-gap-large {
+  gap: $md-sys-grid-gap-large;
+}
+.grid-gap-xlarge {
+  gap: $md-sys-grid-gap-large;
+}
+.grid-gap-2xlarge {
+  gap: $md-sys-grid-gap-2xlarge;
+}
+.grid-gap-3xlarge {
+  gap: $md-sys-grid-gap-3xlarge;
+}
+.grid-gap-4xlarge {
+  gap: $md-sys-grid-gap-4xlarge;
+}
+.grid-gap-5xlarge {
+  gap: $md-sys-grid-gap-5xlarge;
+}
+
+// =============================
+// EXTRA GRID utilities
+// =============================
+
+// == Grid alignment utilities ==
+.grid-align-start {
+  align-items: start;
+}
+.grid-align-center {
+  align-items: center;
+}
+.grid-align-end {
+  align-items: end;
+}
+.grid-justify-start {
+  justify-items: start;
+}
+.grid-justify-center {
+  justify-items: center;
+}
+.grid-justify-end {
+  justify-items: end;
+}
+
+// == Place items shorthand ==
+.grid-place-center {
+  place-items: center;
+}
+
+// == Grid auto-flow utilities ==
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+.grid-flow-column {
+  grid-auto-flow: column;
+}
+
+:root {
+  --md-sys-grid-gap-none: #{$md-sys-grid-gap-none};
+  --md-sys-grid-gap-xsmall: #{$md-sys-grid-gap-xsmall};
+  --md-sys-grid-gap-small: #{$md-sys-grid-gap-small};
+  --md-sys-grid-gap-medium: #{$md-sys-grid-gap-medium};
+  --md-sys-grid-gap-large: #{$md-sys-grid-gap-large};
+  --md-sys-grid-gap-xlarge: #{$md-sys-grid-gap-xlarge};
+  --md-sys-grid-gap-2xlarge: #{$md-sys-grid-gap-2xlarge};
+  --md-sys-grid-gap-3xlarge: #{$md-sys-grid-gap-3xlarge};
+  --md-sys-grid-gap-4xlarge: #{$md-sys-grid-gap-4xlarge};
+  --md-sys-grid-gap-5xlarge: #{$md-sys-grid-gap-5xlarge};
+}
