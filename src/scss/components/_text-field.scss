@@ -1,4 +1,5 @@
 @use "../tokens/system-tokens" as *;
+@use "../mixins/typography" as *;
 
 // ========================================================
 // TEXT FIELD COMPONENT
@@ -8,11 +9,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  font-family: "Roboto", sans-serif;
   width: 100%;
 
   &__label {
-    font-size: 0.875rem;
+    @include typography("body-small");
     color: var(--md-sys-color-on-surface-variant);
     margin-bottom: var(--md-sys-space-xsmall);
   }
@@ -23,7 +23,33 @@
     align-items: center;
     background-color: var(--md-sys-color-surface-variant);
     border-radius: var(--md-sys-shape-corner-small);
-    padding: 0 0.75rem;
+    padding-inline: var(--md-sys-space-medium);
+    padding-block: var(--md-sys-space-small);
+    border: 1px solid transparent;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+    overflow: hidden;
+
+    .text-field__input:focus-visible + &,
+    .text-field__input:focus + & {
+      border-color: var(--md-sys-color-primary);
+    }
+  }
+
+  &__input {
+    @include typography("body-large");
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--md-sys-color-on-surface);
+    outline: none;
+    padding: 0;
+    margin: 0;
+
+    &::placeholder {
+      color: var(--md-sys-color-on-surface-variant);
+    }
   }
 
   &__icon,
@@ -36,51 +62,39 @@
   }
 
   &__icon {
-    margin-right: 0.5rem;
+    margin-right: var(--md-sys-space-xsmall);
   }
 
   &__trailing-icon {
-    margin-left: 0.5rem;
-  }
-
-  &__input {
-    flex: 1;
-    font-size: 1rem;
-    padding: 0.75rem 0;
-    border: none;
-    background: transparent;
-    color: var(--md-sys-color-on-surface);
-    outline: 2px solid transparent;
-    transition: outline-color 0.2s ease;
-
-    &:focus {
-      outline-color: var(--md-sys-color-primary);
-    }
-
-    &::placeholder {
-      color: var(--md-sys-color-on-surface-variant);
-    }
+    margin-left: var(--md-sys-space-xsmall);
   }
 
   &__helper {
-    font-size: 0.75rem;
+    @include typography("body-small");
     color: var(--md-sys-color-on-surface-variant);
     margin-top: var(--md-sys-space-xsmall);
   }
 
-  &--disabled .text-field__input {
-    background-color: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface-variant);
-    cursor: not-allowed;
-    opacity: 0.38;
+  &--disabled {
+    .text-field__input-wrapper {
+      background-color: var(--md-sys-color-surface);
+      opacity: 0.38;
+    }
+
+    .text-field__input {
+      color: var(--md-sys-color-on-surface-variant);
+      cursor: not-allowed;
+    }
   }
 
-  &--error .text-field__input {
-    outline-color: var(--md-sys-color-error);
-  }
+  &--error {
+    .text-field__input-wrapper {
+      border-color: var(--md-sys-color-error);
+    }
 
-  &--error .text-field__helper {
-    color: var(--md-sys-color-error);
+    .text-field__helper {
+      color: var(--md-sys-color-error);
+    }
   }
 
   // == Variants ==
@@ -91,5 +105,13 @@
 
   &--filled .text-field__input-wrapper {
     background-color: var(--md-sys-color-surface-variant);
+    border: 1px solid transparent;
   }
+}
+
+.text-field__input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--md-sys-color-surface-variant) inset;
+  -webkit-text-fill-color: var(--md-sys-color-on-surface);
+  transition: background-color 0s;
 }
