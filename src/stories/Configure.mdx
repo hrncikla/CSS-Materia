@@ -1,0 +1,304 @@
+import { Meta } from "@storybook/blocks";
+
+import Logo from "./assets/my_materia_logo_icon_no_bg.png";
+import Foundations from "./assets/foundations.png";
+import Layout from "./assets/layout.png";
+import Components from "./assets/components.png";
+import Tokens from "./assets/tokens.png";
+import Theming from "./assets/theming.png";
+
+export const RightArrow = () => (
+  <svg
+    viewBox="0 0 14 14"
+    width="8px"
+    height="14px"
+    style={{ marginLeft: "4px", verticalAlign: "middle", fill: "currentColor" }}
+  >
+    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+  </svg>
+);
+
+<Meta title="My Materia" />
+
+<div className="materia-hero">
+  <img src={Logo} alt="My Materia Logo" className="materia-logo" />
+  <h1 className="materia-title">My Materia</h1>
+  <p className="materia-subtitle">
+    A modern, customizable CSS/SCSS framework inspired by Material Design 3.
+  </p>
+</div>
+<div className="materia-grid">
+  <div className="materia-card">
+    <img src={Tokens} alt="Get Started" />
+    <h3>Get Started</h3>
+    <p>
+      Quick guide to install, configure, and start using Materia in your
+      project.
+    </p>
+    <a href="/?path=/docs/get-started--docs">
+      Explore Section
+      <RightArrow />
+    </a>
+  </div>
+  <div className="materia-card">
+    <img src={Foundations} alt="Foundations" />
+    <h3>Foundations</h3>
+    <p>Essential elements like colors, typography, spacing, and shapes.</p>
+    <a href="/?path=/docs/foundations-typography--docs">
+      Explore Section
+      <RightArrow />
+    </a>
+  </div>
+  <div className="materia-card">
+    <img src={Layout} alt="Layout" />
+    <h3>Layout & Grid</h3>
+    <p>
+      Flexible grid and layout utilities, built on Material Design 3
+      breakpoints.
+    </p>
+    <a href="/?path=/docs/layout-layout-spacing--docs">
+      Explore Section
+      <RightArrow />
+    </a>
+  </div>
+  <div className="materia-card">
+    <img src={Components} alt="Components" />
+    <h3>Components</h3>
+    <p>
+      Prebuilt UI elements like buttons, cards, forms, and navigation
+      components.
+    </p>
+    <a href="/?path=/docs/components-badge--docs">
+      Explore Section
+      <RightArrow />
+    </a>
+  </div>
+  <div className="materia-card">
+    <img src={Tokens} alt="Design Tokens" />
+    <h3>Design Tokens</h3>
+    <p>SCSS and CSS tokens system for easily customizing your design system.</p>
+    <a href="/?path=/docs/design-tokens-user-tokens--docs">
+      Explore Section
+      <RightArrow />
+    </a>
+  </div>
+  <div className="materia-card">
+    <img src={Theming} alt="Theming" />
+    <h3>Theming</h3>
+    <p>
+      Customize your theme effortlessly using tokens, mixins, and CSS variables.
+    </p>
+    <a href="/?path=/docs/foundations-colors--docs">
+      Explore Section
+      <RightArrow />
+    </a>
+  </div>
+</div>
+
+<div className="materia-why-container">
+  <h2 className="materia-why-title">Why choose Materia?</h2>
+  <div className="materia-why-grid">
+    <div className="materia-why-item">
+      <h4>Full design control</h4>
+      <p>
+        Thanks to SCSS tokens and CSS variables, you can easily adjust colors,
+        typography, spacing, and shapes to match your design system perfectly.
+      </p>
+    </div>
+    <div className="materia-why-item">
+      <h4>Ready-to-use components</h4>
+      <p>
+        Materia provides prebuilt UI components fully compliant with Material
+        Design 3 for maximum consistency and usability.
+      </p>
+    </div>
+    <div className="materia-why-item">
+      <h4>Performance & Accessibility</h4>
+      <p>
+        Optimized from the ground up for fast load times, responsive design, and
+        accessibility best practices.
+      </p>
+    </div>
+    <div className="materia-why-item">
+      <h4>Responsive layout system</h4>
+      <p>
+        Based on official Material breakpoints, ensuring great appearance on all
+        devices.
+      </p>
+    </div>
+    <div className="materia-why-item">
+      <h4>Simple and modular architecture</h4>
+      <p>
+        Import only what you need. Perfect for small projects and large scalable
+        applications alike.
+      </p>
+    </div>
+    <div className="materia-why-item">
+      <h4>Easy customization and extension</h4>
+      <p>
+        Clear SCSS structure makes it simple to extend, override, or theme your
+        project with minimal effort.
+      </p>
+    </div>
+  </div>
+</div>
+<div className="materia-credits">
+  <p><strong>My Materia</strong> is inspired by Google’s <a href="https://m3.material.io/" target="_blank" rel="noopener noreferrer">Material Design 3</a> (also known as Material You).</p>
+
+  <p>The framework references ideas, color systems, and layout structures described in the official <a href="https://github.com/material-components/" target="_blank" rel="noopener noreferrer">Material Components GitHub organization</a>.</p>
+
+  <p>All icons used are from the <a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer">Material Symbols</a> collection.</p>
+</div>
+
+
+<style>
+{`
+
+.materia-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #ede7f6, #e8f5e9);
+}
+
+.materia-logo {
+  max-width: 120px;
+  margin-bottom: 1rem;
+}
+
+.materia-title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.materia-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.materia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+}
+
+.materia-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 2rem;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.materia-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.materia-card img {
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.materia-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.materia-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.materia-card a {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #6750a4;
+  text-decoration: none;
+}
+
+.materia-card a:hover {
+  text-decoration: underline;
+}
+
+/* Why Materia */
+.materia-why-container {
+  background: #f9f9f9;
+  padding: 4rem 2rem;
+  border-radius: 12px;
+  margin: 4rem 2rem;
+}
+
+.materia-why-title {
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #6a1b9a; 
+}
+
+.materia-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.materia-why-item {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.materia-why-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.materia-why-item h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.materia-why-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Credits */
+.materia-credits {
+  font-size: 0.9rem;
+  color: #444;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  background: #f3f3f5;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.materia-credits a {
+  color: #6750a4;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.materia-credits a:hover {
+  text-decoration: underline;
+}
+`}
+
+</style>

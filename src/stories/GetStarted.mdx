@@ -1,0 +1,79 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Get Started" />
+
+# Get Started with My Materia
+
+Materia is a modern CSS/SCSS framework inspired by Material Design 3.  
+Here’s a quick guide to start using it in your project.
+
+---
+
+## 1. Installation options
+
+You can use My Materia in three ways depending on your setup:
+
+### a) Include raw CSS (quickest)
+
+Simply copy the built CSS into your project and include it in your HTML:
+
+```html
+<link rel="stylesheet" href="/css/materia.min.css" />
+```
+
+### b) Use SCSS (recommended for customization)
+
+Clone or copy the `materia/` folder into your project structure:
+
+```bash
+src/
+ ├── scss/
+ │    ├── materia/
+ │    │    ├── tokens/
+ │    │    ├── mixins/
+ │    │    ├── layout/
+ │    │    ├── components/
+ │    │    └── base/
+ │    └── main.scss
+```
+
+Then import it in your main SCSS file:
+
+```scss
+@use "materia/base";
+@use "materia/tokens" as tokens;
+@use "materia/components/button";
+```
+
+You can override tokens or mixins before importing components.
+
+### c) Integrate with Storybook + JavaScript (for interactive components)
+
+If you're using Storybook to document or prototype, you can:
+
+1. Include the SCSS entry point in `.storybook/preview.js` (or via Vite/webpack config).
+2. Add JavaScript enhancements (like ripple effects or floating labels) by importing:
+
+```js
+import { initMateria } from "../js/materia.js";
+initMateria();
+```
+
+You can also document your components with Materia styling directly inside your MDX stories.
+
+---
+
+## 2. Customize tokens
+
+To adapt Materia to your brand, edit files in `materia/tokens/`.  
+These include colors, typography, radius, spacing, etc.
+
+Example:
+
+```scss
+$md-sys-color-primary: #7e57c2;
+$md-sys-shape-corner-medium: 12px;
+```
+
+---
+
