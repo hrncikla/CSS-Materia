@@ -1,0 +1,13 @@
+// ==========================================================================
+// BASE CORE - Central entry point for all basic                            =
+//                                                                          =
+// Usage: @use "base" in your main SCSS                                     =
+// Modular: You can also import only specific modules (e.g., only color)    =
+// ==========================================================================
+
+@use "../tokens/system-tokens" as *;
+
+@use "reset" as *;
+@use "color" as *;
+@use "typography" as *;
+@use "shapes" as *;

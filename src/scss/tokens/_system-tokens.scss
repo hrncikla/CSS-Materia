@@ -1,0 +1,198 @@
+@use "user-tokens" as *;
+@use "../mixins/colors" as palette;
+
+// ==========================================================
+// SYSTEM TOKENS - Internal computed tokens for framework    =
+// PURPOSE:                                                  =
+//    - These tokens are automatically generated based on    =
+//      USER tokens ($md-user-*) values.                     =
+//    - They should never be edited manually by the user.    =
+//    - Provide consistent values across all components.     =
+//                                                           =
+//    - Users should only customize USER tokens (colors,     =
+//      spacing, typography, etc.) if needed.                =
+//    - SYSTEM tokens are used internally and for automatic  =
+//      token generation (CSS variables, mixins, classes).   =
+// ==========================================================
+
+// =============================
+// Color Tokens - System
+// =============================
+
+@include palette.generate-color-palette($md-user-color-primary, "md-sys-color-primary");
+@include palette.generate-color-palette($md-user-color-secondary, "md-sys-color-secondary");
+@include palette.generate-color-palette($md-user-color-tertiary, "md-sys-color-tertiary");
+@include palette.generate-color-palette($md-user-color-custom, "md-sys-color-custom");
+
+@include palette.generate-color-palette($md-user-color-neutral, "md-sys-color-neutral");
+@include palette.generate-color-palette($md-user-color-error, "md-sys-color-error");
+@include palette.generate-color-palette($md-user-color-success, "md-sys-color-success");
+
+// =============================
+// Typography Tokens
+// =============================
+$md-sys-font-family-primary: $md-user-font-family-primary;
+$md-sys-font-weight-regular: $md-user-font-weight-regular;
+$md-sys-font-weight-medium: $md-user-font-weight-medium;
+$md-sys-font-weight-bold: $md-user-font-weight-bold;
+
+$md-sys-typography: (
+  "display-large": (
+    57px,
+    64px,
+    $md-sys-font-weight-regular
+  ),
+  "display-medium": (
+    45px,
+    52px,
+    $md-sys-font-weight-regular
+  ),
+  "display-small": (
+    36px,
+    44px,
+    $md-sys-font-weight-regular
+  ),
+  "headline-large": (
+    32px,
+    40px,
+    $md-sys-font-weight-regular
+  ),
+  "headline-medium": (
+    28px,
+    36px,
+    $md-sys-font-weight-regular
+  ),
+  "headline-small": (
+    24px,
+    32px,
+    $md-sys-font-weight-regular
+  ),
+  "title-large": (
+    22px,
+    28px,
+    $md-sys-font-weight-medium
+  ),
+  "title-medium": (
+    16px,
+    24px,
+    $md-sys-font-weight-medium
+  ),
+  "title-small": (
+    14px,
+    20px,
+    $md-sys-font-weight-medium
+  ),
+  "body-large": (
+    16px,
+    24px,
+    $md-sys-font-weight-regular
+  ),
+  "body-medium": (
+    14px,
+    20px,
+    $md-sys-font-weight-regular
+  ),
+  "body-small": (
+    12px,
+    16px,
+    $md-sys-font-weight-regular
+  ),
+  "label-large": (
+    14px,
+    20px,
+    $md-sys-font-weight-medium
+  ),
+  "label-medium": (
+    12px,
+    16px,
+    $md-sys-font-weight-medium
+  ),
+  "label-small": (
+    11px,
+    16px,
+    $md-sys-font-weight-medium
+  )
+);
+
+// =============================
+// Layout
+// =============================
+// == Spacing ==
+$md-sys-space-none: $md-user-spacing-none;
+$md-sys-space-xsmall: $md-user-spacing-xsmall;
+$md-sys-space-small: $md-user-spacing-small;
+$md-sys-space-medium: $md-user-spacing-medium;
+$md-sys-space-large: $md-user-spacing-large;
+$md-sys-space-xlarge: $md-user-spacing-xlarge;
+$md-sys-space-2xlarge: $md-user-spacing-2xlarge;
+$md-sys-space-3xlarge: $md-user-spacing-3xlarge;
+$md-sys-space-4xlarge: $md-user-spacing-4xlarge;
+$md-sys-space-5xlarge: $md-user-spacing-5xlarge;
+
+// == Material 3 Breakpoint Tokens ==
+$md-sys-breakpoint-compact: $md-user-breakpoint-compact;
+$md-sys-breakpoint-medium: $md-user-breakpoint-medium;
+$md-sys-breakpoint-large: $md-user-breakpoint-large;
+
+// == Extended Breakpoint Tokens ==
+$md-sys-breakpoint-extended-md: $md-user-breakpoint-extended-md;
+$md-sys-breakpoint-extended-lg: $md-user-breakpoint-extended-lg;
+$md-sys-breakpoint-extended-xl: $md-user-breakpoint-extended-xl;
+$md-sys-breakpoint-extended-2xl: $md-user-breakpoint-extended-2xl;
+
+// == Container max-width calculated dynamically ==
+@function container-max($breakpoint, $offset) {
+  @return $breakpoint - $offset;
+}
+
+$md-sys-container-compact: container-max($md-sys-breakpoint-compact, 0px);
+$md-sys-container-medium: container-max($md-sys-breakpoint-medium, 120px);
+$md-sys-container-large: container-max($md-sys-breakpoint-large, 180px);
+$md-sys-container-extended-md: container-max($md-sys-breakpoint-extended-md, 280px);
+$md-sys-container-extended-lg: container-max($md-sys-breakpoint-extended-lg, 320px);
+$md-sys-container-extended-xl: container-max($md-sys-breakpoint-extended-xl, 360px);
+$md-sys-container-extended-2xl: container-max($md-sys-breakpoint-extended-2xl, 400px);
+
+$md-sys-container-padding: $md-user-spacing-small;
+
+// =============================
+// FLEX GAP Tokens
+// =============================
+$md-sys-flex-gap-none: $md-sys-space-none;
+$md-sys-flex-gap-xsmall: $md-sys-space-xsmall;
+$md-sys-flex-gap-small: $md-sys-space-small;
+$md-sys-flex-gap-medium: $md-sys-space-medium;
+$md-sys-flex-gap-large: $md-sys-space-large;
+$md-sys-flex-gap-xlarge: $md-sys-space-xlarge;
+$md-sys-flex-gap-2xlarge: $md-sys-space-2xlarge;
+$md-sys-flex-gap-3xlarge: $md-sys-space-3xlarge;
+$md-sys-flex-gap-4xlarge: $md-sys-space-4xlarge;
+$md-sys-flex-gap-5xlarge: $md-sys-space-5xlarge;
+
+// =============================
+// GRID GAP Tokens
+// =============================
+$md-sys-grid-gap-none: $md-sys-space-none;
+$md-sys-grid-gap-xsmall: $md-sys-space-xsmall;
+$md-sys-grid-gap-small: $md-sys-space-small;
+$md-sys-grid-gap-medium: $md-sys-space-medium;
+$md-sys-grid-gap-large: $md-sys-space-large;
+$md-sys-grid-gap-xlarge: $md-sys-space-xlarge;
+$md-sys-grid-gap-2xlarge: $md-sys-space-2xlarge;
+$md-sys-grid-gap-3xlarge: $md-sys-space-3xlarge;
+$md-sys-grid-gap-4xlarge: $md-sys-space-4xlarge;
+$md-sys-grid-gap-5xlarge: $md-sys-space-5xlarge;
+
+$md-ref-grid-gap: $md-sys-space-small;
+
+// =============================
+// Shape Tokens - System
+// =============================
+$md-sys-shape-corner-none: 0;
+$md-sys-shape-corner-extra-small: $md-user-shape-extra-small;
+$md-sys-shape-corner-small: $md-user-shape-small;
+$md-sys-shape-corner-medium: $md-user-shape-medium;
+$md-sys-shape-corner-large: $md-user-shape-large;
+$md-sys-shape-corner-extra-large: $md-user-shape-extra-large;
+$md-sys-shape-corner-full: 1000rem;
+

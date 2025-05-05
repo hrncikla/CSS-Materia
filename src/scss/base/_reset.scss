@@ -1,0 +1,56 @@
+@use "../tokens/system-tokens" as *;
+
+// ==============================================================
+// Base Styles and CSS Reset                                    =
+//                                                              =
+// Purpose:                                                     =
+//    - Normalize browser default styles for consistency.       =
+//    - Set up basic element defaults (body, img, a, etc.).     =
+//    - Use system design tokens for colors and fonts.          =
+//                                                              =
+// Notes:                                                       =
+//    - Colors are linked to design tokens for flexibility.     =
+//    - Font inheritance is enforced for form elements.         =
+// ==============================================================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%; // == Disables automatic font size adjustment in Safari ==
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    color: var(--md-sys-color-on-surface);
+    background-color: var(--md-sys-color-surface);
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+%form-elements {
+    font: inherit;
+    color: inherit;
+}
+
+input,
+textarea,
+select,
+button {
+    @extend %form-elements;
+}

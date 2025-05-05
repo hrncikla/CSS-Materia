@@ -1,0 +1,88 @@
+@use "../tokens/system-tokens" as *;
+
+// ==============================================================
+// Shape Utility System                                         =
+//                                                              =
+// Purpose:                                                     =
+//    - Provide border-radius (corner rounding) utilities.      =
+//    - Generate utility classes like .shape-medium-all, etc.   =
+//    - Expose shape tokens as CSS variables for flexibility.   =
+//                                                              =
+// Rules:                                                       =
+//    - SCSS tokens used internally for dynamic generation.     =
+//    - CSS variables allow runtime access and overrides.       =
+// ==============================================================
+
+// =============================
+// Shape Tokens Map
+// =============================
+// Mapping of system shape tokens to variable access.
+
+$shapes: (
+  "none": var(--md-sys-shape-corner-none),
+  "extra-small": var(--md-sys-shape-corner-extra-small),
+  "small": var(--md-sys-shape-corner-small),
+  "medium": var(--md-sys-shape-corner-medium),
+  "large": var(--md-sys-shape-corner-large),
+  "extra-large": var(--md-sys-shape-corner-extra-large),
+  "full": var(--md-sys-shape-corner-full)
+);
+
+// =============================
+// Shape Positions Map
+// =============================
+// Define where the border-radius should apply.
+
+$positions: (
+  "all": border-radius,
+  "top": (
+    border-top-left-radius,
+    border-top-right-radius
+  ),
+  "bottom": (
+    border-bottom-left-radius,
+    border-bottom-right-radius
+  ),
+  "start": (
+    border-top-left-radius,
+    border-bottom-left-radius
+  ),
+  "end": (
+    border-top-right-radius,
+    border-bottom-right-radius
+  )
+);
+
+// =============================
+// Shape Utility Classes
+// =============================
+// Dynamically generate utility classes for all combinations.
+
+@each $size, $value in $shapes {
+  @each $position, $property in $positions {
+    .shape-#{$size}-#{$position} {
+      @if $position == "all" {
+        #{$property}: $value;
+      } @else {
+        @each $prop in $property {
+          #{$prop}: $value;
+        }
+      }
+    }
+  }
+}
+
+// =============================
+// CSS Variables for Shapes
+// =============================
+// Expose shape sizes as root variables.
+
+:root {
+  --md-sys-shape-corner-none: #{$md-sys-shape-corner-none};
+  --md-sys-shape-corner-extra-small: #{$md-sys-shape-corner-extra-small};
+  --md-sys-shape-corner-small: #{$md-sys-shape-corner-small};
+  --md-sys-shape-corner-medium: #{$md-sys-shape-corner-medium};
+  --md-sys-shape-corner-large: #{$md-sys-shape-corner-large};
+  --md-sys-shape-corner-extra-large: #{$md-sys-shape-corner-extra-large};
+  --md-sys-shape-corner-full: #{$md-sys-shape-corner-full};
+}

@@ -1,0 +1,58 @@
+@use "../tokens/system-tokens" as *;
+@use "../mixins/typography" as *;
+
+// ======================================================================
+// Typography System                                                    =
+//                                                                      =
+// Purpose:                                                             =
+//    - Set default typography styles for HTML elements.                =
+//    - Generate utility classes like .body-medium, .title-large, etc.  =
+//    - Provide CSS variables for dynamic typography control.           =
+//                                                                      =
+// Rules:                                                               =
+//    - SCSS tokens used internally for structure.                      =
+//    - CSS variables exposed for runtime adjustments.                  =
+//    - Typography is scalable and easily customizable.                 =
+// ======================================================================
+
+// =============================
+// Element Defaults
+// =============================
+// Apply base typography styles to native HTML elements.
+
+h1 { @include typography("display-large"); }
+h2 { @include typography("display-medium"); }
+h3 { @include typography("display-small"); }
+h4 { @include typography("headline-large"); }
+h5 { @include typography("headline-medium"); }
+h6 { @include typography("headline-small"); }
+p  { @include typography("body-large"); }
+button { @include typography("label-large"); }
+.caption { @include typography("label-small"); }
+
+// =============================
+// Typography Utility Classes
+// =============================
+// Allow direct use via classes: e.g., <p class="body-medium">...</p>
+
+@each $style, $values in $md-sys-typography {
+  .#{$style} {
+    font-size: var(--md-sys-typography-#{$style}-font-size);
+    line-height: var(--md-sys-typography-#{$style}-line-height);
+    font-weight: var(--md-sys-typography-#{$style}-font-weight);
+    font-family: $md-sys-font-family-primary;
+  }
+}
+
+// =============================
+// Typography CSS Variables
+// =============================
+// Generate CSS variables for each typography style.
+
+:root {
+  @each $style, $values in $md-sys-typography {
+    --md-sys-typography-#{$style}-font-size: #{nth($values, 1)};
+    --md-sys-typography-#{$style}-line-height: #{nth($values, 2)};
+    --md-sys-typography-#{$style}-font-weight: #{nth($values, 3)};
+  }
+}
