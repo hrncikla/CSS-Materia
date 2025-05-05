@@ -1,0 +1,64 @@
+@use "../tokens/system-tokens" as *;
+@use "../mixins/typography" as *;
+
+// ========================================================
+// LIST COMPONENT
+// ========================================================
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+}
+
+.list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--md-sys-space-medium);
+  padding: var(--md-sys-space-medium) var(--md-sys-space-large);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  @include typography(body-large);
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--md-sys-color-surface-variant);
+  }
+
+  &--selected {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+  }
+
+  &--disabled {
+    opacity: 0.38;
+    pointer-events: none;
+  }
+}
+
+.list__icon {
+  font-size: 1.5rem;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 0.25rem;
+}
+
+.list__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  @include typography(body-large);
+}
+
+.list__text-main {
+  font-weight: 500;
+}
+
+.list__text-supporting,
+.list__meta {
+  @include typography(body-small);
+  color: var(--md-sys-color-on-surface-variant);
+}

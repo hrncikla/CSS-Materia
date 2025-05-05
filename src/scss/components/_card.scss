@@ -1,0 +1,79 @@
+@use "../tokens/system-tokens" as *;
+@use "../mixins/typography" as *;
+
+// ========================================================
+// CARD COMPONENT
+// ========================================================
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-medium);
+  box-shadow: var(--md-sys-elevation-1);
+  padding: var(--md-sys-space-medium);
+  color: var(--md-sys-color-on-surface);
+  overflow: hidden;
+
+  &--outlined {
+    box-shadow: none;
+    border: 1px solid var(--md-sys-color-outline);
+  }
+
+  &--filled {
+    background-color: var(--md-sys-color-primary-container);
+    box-shadow: none;
+  }
+
+  &__media {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 200px;
+    margin-bottom: var(--md-sys-space-small);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--md-sys-space-small);
+    margin-bottom: var(--md-sys-space-small);
+
+    &-text {
+      flex: 1;
+    }
+
+    &-title {
+      @include typography("title-large");
+    }
+
+    &-subtitle {
+      @include typography("body-small");
+      color: var(--md-sys-color-on-surface-variant);
+    }
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-sys-color-on-primary-container);
+    font-size: 1.25rem;
+  }
+
+  &__content {
+    @include typography(body-medium);
+    color: var(--md-sys-color-on-surface);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--md-sys-space-small);
+    margin-top: var(--md-sys-space-medium);
+  }
+}

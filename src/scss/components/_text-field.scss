@@ -1,0 +1,95 @@
+@use "../tokens/system-tokens" as *;
+
+// ========================================================
+// TEXT FIELD COMPONENT
+// ========================================================
+
+.text-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+
+  &__label {
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+    margin-bottom: var(--md-sys-space-xsmall);
+  }
+
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: var(--md-sys-shape-corner-small);
+    padding: 0 0.75rem;
+  }
+
+  &__icon,
+  &__trailing-icon {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+  }
+
+  &__trailing-icon {
+    margin-left: 0.5rem;
+  }
+
+  &__input {
+    flex: 1;
+    font-size: 1rem;
+    padding: 0.75rem 0;
+    border: none;
+    background: transparent;
+    color: var(--md-sys-color-on-surface);
+    outline: 2px solid transparent;
+    transition: outline-color 0.2s ease;
+
+    &:focus {
+      outline-color: var(--md-sys-color-primary);
+    }
+
+    &::placeholder {
+      color: var(--md-sys-color-on-surface-variant);
+    }
+  }
+
+  &__helper {
+    font-size: 0.75rem;
+    color: var(--md-sys-color-on-surface-variant);
+    margin-top: var(--md-sys-space-xsmall);
+  }
+
+  &--disabled .text-field__input {
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface-variant);
+    cursor: not-allowed;
+    opacity: 0.38;
+  }
+
+  &--error .text-field__input {
+    outline-color: var(--md-sys-color-error);
+  }
+
+  &--error .text-field__helper {
+    color: var(--md-sys-color-error);
+  }
+
+  // == Variants ==
+  &--outlined .text-field__input-wrapper {
+    background-color: transparent;
+    border: 1px solid var(--md-sys-color-outline);
+  }
+
+  &--filled .text-field__input-wrapper {
+    background-color: var(--md-sys-color-surface-variant);
+  }
+}

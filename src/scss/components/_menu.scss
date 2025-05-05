@@ -1,0 +1,58 @@
+@use "../tokens/system-tokens" as *;
+
+// ========================================================
+// MENU COMPONENT 
+// ========================================================
+
+.menu {
+    position: absolute;
+    min-width: 160px;
+    padding: 0.25rem 0;
+    background-color: var(--md-sys-color-surface);
+    border-radius: var(--md-sys-shape-corner-medium);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    z-index: 1000;
+  }
+  
+  .menu__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: var(--md-sys-color-on-surface);
+    background-color: var(--md-sys-color-surface);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  
+    &:hover {
+      background-color: var(--md-sys-color-surface-variant);
+    }
+  
+    &--disabled {
+      opacity: 0.38;
+      pointer-events: none;
+    }
+  }
+  
+  .menu__icon {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+    color: var(--md-sys-color-on-surface-variant);
+  }
+  
+  .menu__shortcut {
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+    margin-left: auto;
+  }
+  
+  .menu__divider {
+    height: 1px;
+    background-color: var(--md-sys-color-outline-variant);
+    margin: 0.25rem 0;
+  }
+  

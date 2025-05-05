@@ -1,0 +1,57 @@
+@use "../tokens/system-tokens" as *;
+@use "../mixins/typography" as *;
+
+// ========================================================
+// TABS COMPONENT
+// ========================================================
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--md-sys-color-outline);
+  position: relative;
+  gap: var(--md-sys-space-medium);
+}
+
+.tab {
+  @include typography("label-large");
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: var(--md-sys-color-on-surface);
+  text-transform: uppercase;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--md-sys-color-primary);
+  }
+
+  &--active {
+    color: var(--md-sys-color-primary);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: var(--md-sys-color-primary);
+      border-radius: 1px;
+    }
+  }
+
+  &--disabled {
+    color: var(--md-sys-color-on-surface);
+    opacity: 0.38;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.tab-icon {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
