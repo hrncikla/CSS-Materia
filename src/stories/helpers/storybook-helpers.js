@@ -1,9 +1,7 @@
-// storybook-helpers.js
-
 /**
  * Creates a styled text label with typography and spacing.
  * @param {string} text - The text content.
- * @param {string} type - The typography style (e.g. "body-medium", "label-large").
+ * @param {string} type - The typography style.
  * @returns {HTMLDivElement}
  */
 export const createLabel = (text, type = 'body-large') => {
@@ -31,7 +29,7 @@ export const createSection = () => {
 
 /**
  * Adds a vertical space between blocks.
- * @param {string} height - The height of the space (e.g. "1rem").
+ * @param {string} height - The height of the space.
  * @returns {HTMLDivElement}
  */
 export const createSpacer = (height = '0.5rem') => {
@@ -39,7 +37,6 @@ export const createSpacer = (height = '0.5rem') => {
   spacer.style.height = height;
   return spacer;
 };
-
 
 /**
  * Creates a consistent wrapper for story examples that need larger preview area.
@@ -61,10 +58,8 @@ export const createStoryWrapper = (minHeight = '300px', offsetX = '0') => {
   return wrapper;
 };
 
-
-
 /**
- * Creates a colored box (e.g. for tokens or color previews)
+ * Creates a colored box.
  * @param {string} backgroundColor - Background color of the box
  * @param {string} label - Text inside the box
  * @param {string} textColor - Optional custom text color
