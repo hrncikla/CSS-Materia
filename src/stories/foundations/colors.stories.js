@@ -47,7 +47,7 @@ export default {
           '```',
           '',
           '### 🔹 Customizing Your Own Color Palette',
-          'Users can **define their own seed colors** by modifying the `user-settings.scss` file.  ',
+          'Users can **define their own seed colors** by modifying the `user-tokens.scss` file.  ',
           'After making changes, simply **rebuild the project** to generate a new color palette.',
           '',
           '#### **1️⃣ Modify `_user-tokens.scss`**',
@@ -66,7 +66,7 @@ export default {
           '',
           '#### 3️⃣ View Your Generated Color Palette',
           'Below, you can see **your currently generated color palette** with all tones.',
-          'These colors are automatically applied based on the values set in `user-settings.scss`.'
+          'These colors are automatically applied based on the values set in `user-tokens.scss`.'
         ].join('\n'),
       },
     },
