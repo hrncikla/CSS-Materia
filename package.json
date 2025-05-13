@@ -5,7 +5,7 @@
   "main": "build/css/main.css",
   "style": "build/css/main.css",
   "scripts": {
-    "storybook": "storybook dev -p 6006",
+    "storybook": "npm run build:css && storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build:css": "sass src/scss:build/css --style compressed",
     "watch:css": "sass --watch src/scss:build/css"

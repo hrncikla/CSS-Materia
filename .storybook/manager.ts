@@ -4,7 +4,7 @@ import { create } from '@storybook/theming/create';
 addons.setConfig({
   theme: create({
     brandTitle: 'My Materia',
-    brandImage: '/my_materia_logo_no_bg.svg',
+    brandImage: 'my_materia_logo_no_bg.svg',
     brandTarget: '/?path=/docs/my-materia--docs', 
     base: 'light',
 
