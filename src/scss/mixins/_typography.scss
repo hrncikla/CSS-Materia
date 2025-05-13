@@ -1,5 +1,6 @@
-@use "../tokens/user-tokens" as *;
 @use "../tokens/system-tokens" as *;
+@use "sass:map";
+@use "sass:list";
 
 // ====================================================
 // Typography Mixins                                   =
@@ -8,11 +9,11 @@
 // ====================================================
 
 @mixin typography($style) {
-  @if map-has-key($md-sys-typography, $style) {
-    $values: map-get($md-sys-typography, $style);
-    font-size: nth($values, 1);
-    line-height: nth($values, 2);
-    font-weight: nth($values, 3);
+  @if map.has-key($md-sys-typography, $style) {
+    $values: map.get($md-sys-typography, $style);
+    font-size: list.nth($values, 1);
+    line-height: list.nth($values, 2);
+    font-weight: list.nth($values, 3);
     font-family: $md-sys-font-family-primary;
   } @else {
     @warn "Typography style `#{$style}` is not defined!";

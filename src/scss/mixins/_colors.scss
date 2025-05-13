@@ -1,14 +1,14 @@
+@use "sass:meta";
 @use "sass:color";
 
 // ==============================================================
-// Colors Mixins                                                 =
+// Colors mixin                                                 =
 //                                                              =
 // Usage:                                                       =
 //     @include generate-color-palette($color, $prefix)         =
 //     -> Generates a full tonal palette for the given color.   =
 // ==============================================================
 
-// == Color Palette Generator ==
 @mixin generate-color-palette($color, $prefix) {
   $palette: (
     "0": darken($color, 90%),
@@ -28,7 +28,7 @@
 
   :root {
     @each $key, $value in $palette {
-      --#{$prefix}-#{$key}: #{inspect($value)};
+      --#{$prefix}-#{$key}: #{meta.inspect($value)};
     }
   }
 }
@@ -42,4 +42,3 @@
 @function darken($color, $percent) {
   @return color.mix(black, $color, $percent);
 }
-
