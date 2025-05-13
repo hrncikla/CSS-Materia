@@ -1,6 +1,5 @@
 import { fn } from '@storybook/test';
 import { createCard } from '../../js/modules/card';
-import { createButton } from '../../js/modules/button';
 import { createStoryWrapper } from '../helpers/storybook-helpers';
 
 export default {
@@ -11,54 +10,74 @@ export default {
     docs: {
       description: {
         component: [
-          'Cards are surfaces that display content and actions on a single topic. They follow Material Design 3 guidelines and come in several layout variants.',
+          'Cards are flexible containers for content and actions, following Material Design 3 guidelines.',
           '',
-          '### Card Features',
-          '- **Header section** with title, subtitle and optional icon/avatar',
-          '- **Media support** (image, video, etc.)',
-          '- **Main content** block',
-          '- **Action buttons** for interaction',
-          '- **Variants**: filled, outlined, default (elevated)',
+          '**Key Features:**',
+          '- Headers with title, subtitle, and optional icons',
+          '- Media support (images, videos)',
+          '- Action buttons',
+          '- Filled, outlined, and elevated variants',
           '',
-          'The `icon` field uses the custom `createIcon` function to render Material Symbols in the card header.',
-          '',
-          '### Available Classes',
+          '**Available Classes:**',
           '- `.card` – base card component',
-          '- `.card--filled` – filled variant with surface-variant background',
-          '- `.card--outlined` – border-only card with no shadow',
-          '- `.card__media` – image/media block',
-          '- `.card__header` – container for icon and title/subtitle',
-          '- `.card__icon` – circular icon/avatar',
+          '- `.card--filled` – filled variant with primary container background',
+          '- `.card--outlined` – border-only card without shadow',
+          '- `.card__media` – image or media block',
+          '- `.card__header` – container for icons, titles, and subtitles',
+          '- `.card__icon` – circular icon or avatar',
           '- `.card__header-title` – primary heading',
           '- `.card__header-subtitle` – secondary text',
-          '- `.card__content` – body text area',
+          '- `.card__content` – main body text area',
           '- `.card__actions` – container for action buttons',
+          '',
+          '**HTML Example:**',
+          '',
+          '```html',
+          '<div class="card card--filled">',
+          '  <div class="card__header">',
+          '    <div class="card__icon">',
+          '      <span class="material-symbols-outlined">folder</span>',
+          '    </div>',
+          '    <div class="card__header-text">',
+          '      <div class="card__header-title">Card Title</div>',
+          '      <div class="card__header-subtitle">Card Subtitle</div>',
+          '    </div>',
+          '  </div>',
+          '  <div class="card__content">',
+          '    Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          '  </div>',
+          '  <div class="card__actions">',
+          '    <button class="button button--text">Action</button>',
+          '  </div>',
+          '</div>',
+          '```'
         ].join('\n'),
       },
     },
   },
-  argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: ['', 'filled', 'outlined'],
-    },
-    mediaSrc: { control: 'text' },
-    icon: {
-      control: { type: 'select' },
-      options: ['', 'shopping_bag', 'image', 'favorite', 'person'],
-    },
-    title: { control: 'text' },
-    subtitle: { control: 'text' },
-    content: { control: 'text' },
+argTypes: {
+  variant: {
+    control: { type: 'select' },
+    options: ['', 'filled', 'outlined'],
   },
-  args: {
-    variant: '',
-    mediaSrc: '',
-    icon: '',
-    title: 'Card title',
-    subtitle: '',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  icon: {
+    control: { type: 'select' },
+    options: ['', 'shopping_bag', 'image', 'favorite', 'person', 'folder'],
   },
+  title: { control: 'text' },
+  subtitle: { control: 'text' },
+  content: { control: 'text' },
+  media: { control: 'boolean' },
+},
+args: {
+  variant: '',
+  icon: '',
+  title: 'Card Title',
+  subtitle: 'Card Subtitle',
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  media: false,
+},
+
 };
 
 export const LiveExample = (args) => {
@@ -71,18 +90,17 @@ LiveExample.storyName = 'Live Example';
 LiveExample.parameters = {
   docs: {
     description: {
-      story: 'An interactive card with editable content, media, icon, and actions.',
+      story: '**Interactive card** with live controls for title, subtitle, icon, and more.\n\n```html\n<div class="card card--filled">\n  <div class="card__header">\n    <div class="card__icon">\n      <span class="material-symbols-outlined">folder</span>\n    </div>\n    <div class="card__header-text">\n      <div class="card__header-title">Card Title</div>\n      <div class="card__header-subtitle">Card Subtitle</div>\n    </div>\n  </div>\n  <div class="card__content">Lorem ipsum dolor sit amet.</div>\n</div>\n```',
     },
   },
 };
 
 export const Showcase = () => {
   const wrapper = createStoryWrapper();
-  wrapper.style.display = 'flex';
-  wrapper.style.flexWrap = 'wrap';
+  wrapper.style.display = 'grid';
+  wrapper.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
   wrapper.style.gap = '1.5rem';
-  wrapper.style.backgroundColor = '#F4F4F4';
-  wrapper.style.padding = '1rem';
+  wrapper.style.padding = '1.5rem';
 
   const examples = [
     {
@@ -102,44 +120,24 @@ export const Showcase = () => {
       content: 'Filled cards offer more color contrast.',
     },
     {
-      mediaSrc: 'https://via.placeholder.com/400x160',
+      mediaSrc: 'https://via.placeholder.com/400x200',
       title: 'Card with Media',
       content: 'A card featuring a top image.',
     },
     {
-      icon: 'shopping_bag',
+      icon: 'folder',
       title: 'Card with Icon',
       subtitle: 'Visual identity with `.card__icon`',
       content: 'Icons help represent the card\'s purpose.',
     },
-    {
-      title: 'Card with Actions',
-      content: 'This card uses your framework buttons.',
-      actions: [
-        { label: 'OK', onClick: fn() },
-        { label: 'Cancel', onClick: fn() },
-      ],
-    },
-    {
-      mediaSrc: 'https://via.placeholder.com/400x160',
-      variant: 'outlined',
-      icon: 'image',
-      title: 'All Features',
-      subtitle: 'Full header + media + actions',
-      content: 'This card demonstrates all features together.',
-      actions: [
-        { label: 'OK', onClick: fn() },
-        { label: 'Cancel', onClick: fn() },
-      ],
-    },
+
   ];
 
   examples.forEach((args) => {
     const card = createCard({
       ...args,
-      actions: args.actions?.map(({ label, onClick }) => createButton({
+      actions: args.actions?.map(({ label, onClick }) => ({
         label,
-        variant: 'text',
         onClick,
       })) || [],
     });
@@ -151,14 +149,10 @@ export const Showcase = () => {
 Showcase.parameters = {
   docs: {
     description: {
-      story: 'Showcase of multiple card configurations combining media, headers, icons, and actions.',
+      story: '**Showcase of multiple card configurations**: filled, outlined, with media, icons, and actions.\n',
     },
   },
 };
-
-
-
-
 
 export const Filled = () => {
   const wrapper = createStoryWrapper();
@@ -166,7 +160,7 @@ export const Filled = () => {
     variant: 'filled',
     title: 'Filled Card',
     subtitle: 'Surface-variant background',
-    content: 'This card uses the `.card--filled` class and primary container color.',
+    content: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   });
   wrapper.appendChild(card);
   return wrapper;
@@ -177,7 +171,6 @@ Filled.parameters = {
       story: [
         'A card styled with the `filled` variant using `.card--filled`, providing a surface-variant background.',
         '',
-        '**HTML Example:**',
         '```html',
         '<div class="card card--filled">',
         '  <div class="card__header">',
@@ -187,7 +180,7 @@ Filled.parameters = {
         '    </div>',
         '  </div>',
         '  <div class="card__content">',
-        '    This card uses the `.card--filled` class and primary container color.',
+        '     Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         '  </div>',
         '</div>',
         '```'
@@ -202,7 +195,7 @@ export const Outlined = () => {
     variant: 'outlined',
     title: 'Outlined Card',
     subtitle: 'No shadow, just border',
-    content: 'This card uses the `.card--outlined` class for a low emphasis layout.',
+    content: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   });
   wrapper.appendChild(card);
   return wrapper;
@@ -213,7 +206,6 @@ Outlined.parameters = {
       story: [
         'A card using the `outlined` variant with `.card--outlined` class to show a border and no elevation.',
         '',
-        '**HTML Example:**',
         '```html',
         '<div class="card card--outlined">',
         '  <div class="card__header">',
@@ -223,7 +215,7 @@ Outlined.parameters = {
         '    </div>',
         '  </div>',
         '  <div class="card__content">',
-        '    This card uses the `.card--outlined` class for a low emphasis layout.',
+        '     Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         '  </div>',
         '</div>',
         '```'
@@ -231,14 +223,13 @@ Outlined.parameters = {
     },
   },
 };
-
 export const WithMedia = () => {
   const wrapper = createStoryWrapper();
   const card = createCard({
-    mediaSrc: 'https://via.placeholder.com/400x200',
+    media: true,
     title: 'Card with Media',
     subtitle: 'Media above content',
-    content: 'A card that includes a media section using the `.card__media` class.',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   });
   wrapper.appendChild(card);
   return wrapper;
@@ -249,10 +240,9 @@ WithMedia.parameters = {
       story: [
         'A card that includes a media section using the `.card__media` class.',
         '',
-        '**HTML Example:**',
         '```html',
         '<div class="card">',
-        '  <img src="..." class="card__media" alt="">',
+        '  <div class="card__media">Media</div>',
         '  <div class="card__header">',
         '    <div class="card__header-text">',
         '      <div class="card__header-title">Card with Media</div>',
@@ -260,7 +250,7 @@ WithMedia.parameters = {
         '    </div>',
         '  </div>',
         '  <div class="card__content">',
-        '    A card that includes a media section using the `.card__media` class.',
+        '    Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         '  </div>',
         '</div>',
         '```'

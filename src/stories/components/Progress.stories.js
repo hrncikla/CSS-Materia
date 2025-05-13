@@ -9,7 +9,7 @@ export default {
     docs: {
       description: {
         component: [
-          'The linear progress bar indicates activity or status of a process. )',
+          'The linear progress bar indicates activity or status of a process.',
           '',
           '### Features',
           '- Visual representation of task progress from **0–100%**',

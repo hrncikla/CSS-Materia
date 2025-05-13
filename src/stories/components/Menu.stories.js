@@ -1,7 +1,6 @@
-import { fn } from '@storybook/test';
-
 import { createMenu } from '../../js/modules/menu';
-import { action } from '@storybook/addon-actions';
+import { createStoryWrapper } from '../helpers/storybook-helpers';
+import { createIcon } from '../../js/modules/icon';
 
 export default {
   title: 'Components/Menu',
@@ -29,7 +28,6 @@ export default {
           '',
           '### HTML Example',
           '```html',
-          '<div class="my-wrapper">',
           '  <div class="menu">',
           '    <div class="menu__item">',
           '      <span class="menu__icon">',
@@ -46,7 +44,6 @@ export default {
           '      <span>Logout</span>',
           '    </div>',
           '  </div>',
-          '</div>',
           '```'
         ].join('\n'),
       },
@@ -54,31 +51,42 @@ export default {
   },
   argTypes: {
     items: { control: 'object' },
-    onSelect: { action: 'selected' },
   },
   args: {
     items: [
-      { icon: '<span class="material-symbols-outlined icon">edit</span>', label: 'Edit' },
-      { icon: '<span class="material-symbols-outlined icon">delete</span>', label: 'Delete' },
+      { icon: 'edit', label: 'Edit' },
+      { icon: 'delete', label: 'Delete' },
       { divider: true },
-      { icon: '<span class="material-symbols-outlined icon">settings</span>', label: 'Settings', shortcut: 'Ctrl+S' },
-      { icon: '<span class="material-symbols-outlined icon">logout</span>', label: 'Logout', disabled: true },
+      { icon: 'settings', label: 'Settings', shortcut: 'Ctrl+S' },
+      { icon: 'logout', label: 'Logout', disabled: true },
     ],
-    onSelect: fn(),
   },
 };
 
 export const LiveExample = (args) => {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'my-wrapper';
-  wrapper.style.padding = '2rem';
-  wrapper.style.position = 'relative';
+  const wrapper = createStoryWrapper();
 
   const trigger = document.createElement('button');
   trigger.textContent = 'Toggle Menu';
   trigger.style.padding = '0.5rem 1rem';
 
-  const menu = createMenu(args);
+  const items = [
+    { label: 'Basic Item 1' },
+    { label: 'Basic Item 2' },
+    { label: 'Basic Item 3' },
+  ];
+
+  if (args.icon) {
+    items.forEach((item, index) => {
+      items[index].icon = ['edit', 'folder', 'settings'][index % 3];
+    });
+  }
+
+  if (args.divider) {
+    items.splice(1, 0, { divider: true });
+  }
+
+  const menu = createMenu({ items });
   menu.style.position = 'absolute';
   menu.style.top = '3rem';
   menu.style.left = '0';
@@ -92,75 +100,55 @@ export const LiveExample = (args) => {
   wrapper.appendChild(menu);
   return wrapper;
 };
+
 LiveExample.storyName = 'Live Example';
+LiveExample.argTypes = {
+  icon: { control: 'boolean', defaultValue: false },
+  divider: { control: 'boolean', defaultValue: false },
+};
+LiveExample.args = {
+  icon: false,
+  divider: false,
+};
 LiveExample.parameters = {
   docs: {
     description: {
-      story: 'Interactive menu rendered on button click. Items can include icons, shortcuts, dividers and disabled states.',
+      story: `
+Interactive menu with toggle options for icons and dividers.
+`,
     },
   },
-  options: { showPanel: false },
-  story: { disable: true },
 };
 
 export const Showcase = () => {
-  const container = document.createElement('div');
-  container.className = 'my-wrapper';
-  container.style.padding = '2rem';
-  container.style.display = 'grid';
-  container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(240px, 1fr))';
-  container.style.gap = '1.5rem';
-  container.style.backgroundColor = '#F4F4F4';
+  const wrapper = createStoryWrapper();
+  wrapper.style.display = 'grid';
+  wrapper.style.gridTemplateColumns = 'repeat(auto-fit, minmax(240px, 1fr))';
+  wrapper.style.gap = '1.5rem';
+  wrapper.style.padding = '1.5rem';
 
   const examples = [
     {
-      title: 'Basic Menu',
-      items: [
-        { label: 'New file' },
-        { label: 'Open...' },
-        { label: 'Save' },
-      ],
-    },
-    {
       title: 'With Icons',
       items: [
-        { icon: '<span class="material-symbols-outlined icon">description</span>', label: 'Document' },
-        { icon: '<span class="material-symbols-outlined icon">folder</span>', label: 'Folder' },
-        { icon: '<span class="material-symbols-outlined icon">settings</span>', label: 'Settings' },
+        { icon: 'folder', label: 'File' },
+        { icon: 'folder', label: 'Folder' },
+        { icon: 'star', label: 'Favorite' },
       ],
     },
     {
       title: 'With Shortcuts',
       items: [
-        { label: 'Copy', shortcut: 'Ctrl+C' },
-        { label: 'Paste', shortcut: 'Ctrl+V' },
-        { label: 'Cut', shortcut: 'Ctrl+X' },
+        { label: 'Undo', shortcut: 'Ctrl+Z' },
+        { label: 'Redo', shortcut: 'Ctrl+Y' },
       ],
     },
     {
-      title: 'With Disabled',
+      title: 'With Disabled Items',
       items: [
-        { label: 'Item 1' },
-        { label: 'Item 2', disabled: true },
-        { label: 'Item 3' },
-      ],
-    },
-    {
-      title: 'With Divider',
-      items: [
-        { label: 'Profile' },
-        { label: 'Account' },
-        { divider: true },
-        { label: 'Logout' },
-      ],
-    },
-    {
-      title: 'All Features',
-      items: [
-        { icon: '<span class="material-symbols-outlined icon">edit</span>', label: 'Edit', shortcut: 'E' },
-        { icon: '<span class="material-symbols-outlined icon">sync</span>', label: 'Sync', shortcut: 'S' },
-        { divider: true },
-        { icon: '<span class="material-symbols-outlined icon">delete</span>', label: 'Delete', disabled: true },
+        { label: 'Option A' },
+        { label: 'Option B', disabled: true },
+        { label: 'Option C' },
       ],
     },
   ];
@@ -171,111 +159,163 @@ export const Showcase = () => {
     label.textContent = title;
     label.style.display = 'block';
     label.style.marginBottom = '0.5rem';
+    section.appendChild(label);
 
     const menu = createMenu({
-      items,
-      onSelect: action('menu item selected'),
+      items: items.map(item => ({
+        ...item,
+        icon: item.icon ? createIcon({ symbol: item.icon, useMaterial: true }) : null,
+      })),
     });
 
-    section.appendChild(label);
     section.appendChild(menu);
-    container.appendChild(section);
+    wrapper.appendChild(section);
   });
 
-  return container;
+  return wrapper;
 };
 
 Showcase.parameters = {
   docs: {
     description: {
-      story: 'Showcase of all available menu configurations: icons, shortcuts, dividers, disabled and more.',
+      story: `
+Showcase of various menu configurations, including icons, shortcuts, dividers, and disabled items.
+\`\`\`
+`,
     },
   },
 };
 
-
-
-export const WithDisabledItem = {
-  args: {
+export const WithDisabledItem = () => {
+  const wrapper = createStoryWrapper();
+  const menu = createMenu({
     items: [
       { label: 'Option A' },
       { label: 'Option B', disabled: true },
       { label: 'Option C' },
     ],
-  },
+  });
+  wrapper.appendChild(menu);
+  return wrapper;
 };
 WithDisabledItem.parameters = {
   docs: {
     description: {
-      story: 'A menu item with `.menu__item--disabled` is styled with reduced opacity and cannot be interacted with.',
+      story: `
+A menu item with \`.menu__item--disabled\` is styled with reduced opacity and cannot be interacted with.
+
+\`\`\`html
+<div class="menu">
+  <div class="menu__item">Option A</div>
+  <div class="menu__item menu__item--disabled">Option B</div>
+  <div class="menu__item">Option C</div>
+</div>
+\`\`\`
+`,
     },
   },
 };
 
-export const WithShortcuts = {
-  args: {
+export const WithShortcuts = () => {
+  const wrapper = createStoryWrapper();
+  const menu = createMenu({
     items: [
       { label: 'Undo', shortcut: 'Ctrl+Z' },
       { label: 'Redo', shortcut: 'Ctrl+Y' },
     ],
-  },
+  });
+  wrapper.appendChild(menu);
+  return wrapper;
 };
 WithShortcuts.parameters = {
   docs: {
     description: {
-      story: 'Shortcuts are displayed on the right using `.menu__shortcut`.',
+      story: `
+Shortcuts are displayed on the right using \`.menu__shortcut\`.
+
+\`\`\`html
+<div class="menu">
+  <div class="menu__item">
+    <span class="menu__label">Undo</span>
+    <span class="menu__shortcut">Ctrl+Z</span>
+  </div>
+  <div class="menu__item">
+    <span class="menu__label">Redo</span>
+    <span class="menu__shortcut">Ctrl+Y</span>
+  </div>
+</div>
+\`\`\`
+`,
     },
   },
 };
 
-export const IconsOnly = {
-  args: {
+export const IconsOnly = () => {
+  const wrapper = createStoryWrapper();
+  const menu = createMenu({
     items: [
-      { icon: '📄', label: 'File' },
-      { icon: '📁', label: 'Folder' },
-      { icon: '⭐', label: 'Favorite' },
+      { icon: 'folder', label: 'File' },
+      { icon: 'folder', label: 'Folder' },
+      { icon: 'star', label: 'Favorite' },
     ],
-  },
+  });
+  wrapper.appendChild(menu);
+  return wrapper;
 };
 IconsOnly.parameters = {
   docs: {
     description: {
-      story: 'Menu with leading icons using `.menu__icon`.',
+      story: `
+Menu with leading icons using \`.menu__icon\`.
+
+\`\`\`html
+<div class="menu">
+  <div class="menu__item">
+    <span class="menu__icon material-symbols-outlined">star</span>
+    <span class="menu__label">File</span>
+  </div>
+  <div class="menu__item">
+    <span class="menu__icon material-symbols-outlined">star</span>
+    <span class="menu__label">Folder</span>
+  </div>
+  <div class="menu__item">
+    <span class="menu__icon material-symbols-outlined">star</span>
+    <span class="menu__label">Favorite</span>
+  </div>
+</div>
+\`\`\`
+`,
     },
   },
 };
 
-export const DividerOnly = {
-  args: {
+export const DividerOnly = () => {
+  const wrapper = createStoryWrapper();
+  const menu = createMenu({
     items: [
       { label: 'Top' },
       { divider: true },
       { label: 'Bottom' },
     ],
-  },
+  });
+  wrapper.appendChild(menu);
+  return wrapper;
 };
 DividerOnly.parameters = {
   docs: {
     description: {
-      story: 'Divider creates a visual separation using `.menu__divider`.',
+      story: `
+Divider creates a visual separation using \`.menu__divider\`.
+
+\`\`\`html
+<div class="menu">
+  <div class="menu__item">Top</div>
+  <div class="menu__divider"></div>
+  <div class="menu__item">Bottom</div>
+</div>
+\`\`\`
+`,
     },
   },
 };
 
-export const AllFeatures = {
-  args: {
-    items: [
-      { icon: '✏️', label: 'Rename', shortcut: 'F2' },
-      { icon: '🗑️', label: 'Delete', disabled: true },
-      { divider: true },
-      { icon: '⚙️', label: 'Settings', shortcut: 'Ctrl+S' },
-    ],
-  },
-};
-AllFeatures.parameters = {
-  docs: {
-    description: {
-      story: 'Combined menu with icon, shortcut, disabled item, and divider.',
-    },
-  },
-};

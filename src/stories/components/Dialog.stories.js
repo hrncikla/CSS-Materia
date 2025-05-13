@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component: [
-          'Dialogs communicate important information that requires user attention. They follow the Material Design 3 guidelines and come in multiple variants to reflect purpose and hierarchy.',
+          'Dialogs communicate important information that requires user attention.',
           '',
           '### Dialog Features',
           '- **Modal presentation** with dimmed overlay',

@@ -50,35 +50,28 @@ export default {
       },
     },
   },
-  argTypes: {
-    label: { control: 'text' },
-    placeholder: { control: 'text' },
-    value: { control: 'text' },
-    variant: {
-      control: { type: 'select' },
-      options: ['filled', 'outlined'],
-    },
-    icon: { control: 'text' },
-    trailingIcon: { control: 'text' },
-    helper: { control: 'text' },
-    error: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    multiline: { control: 'boolean' },
-    onInput: { action: 'input changed' },
+argTypes: {
+  label: { control: 'text' },
+  placeholder: { control: 'text' },
+  value: { control: 'text' },
+  variant: {
+    control: { type: 'select' },
+    options: ['filled', 'outlined'],
   },
-  args: {
-    label: 'Name',
-    placeholder: 'Enter your name',
-    value: '',
-    variant: 'filled',
-    icon: '',
-    trailingIcon: '',
-    helper: '',
-    error: false,
-    disabled: false,
-    multiline: false,
-    onInput: fn(),
-  },
+  helper: { control: 'text' },
+  disabled: { control: 'boolean' },
+},
+args: {
+  label: 'Name',
+  placeholder: 'Enter your name',
+  value: '',
+  variant: 'filled',
+  helper: 'This is a helper message',
+  disabled: false,
+
+},
+
+
 };
 
 export const LiveExample = (args) => {
@@ -181,7 +174,7 @@ export const Filled = {
 Filled.parameters = {
   docs: {
     description: {
-      story: '**Filled text field** with subtle background and rounded edges.\n\n```html\n<div class="text-field text-field--filled">...</div>\n```',
+      story: '**Filled text field** with subtle background and rounded edges.\n\n```html\n<div class="text-field text-field--filled">\n  <label class="text-field__label">First Name</label>\n  <div class="text-field__input-wrapper">\n    <input class="text-field__input" placeholder="Enter first name">\n  </div>\n  <div class="text-field__helper">Example of filled variant</div>\n</div>\n```',
     },
   },
 };
@@ -197,7 +190,7 @@ export const Outlined = {
 Outlined.parameters = {
   docs: {
     description: {
-      story: '**Outlined text field** with border instead of background.\n\n```html\n<div class="text-field text-field--outlined">...</div>\n```',
+      story: '**Outlined text field** with border instead of background.\n\n```html\n<div class="text-field text-field--outlined">\n  <label class="text-field__label">Last Name</label>\n  <div class="text-field__input-wrapper">\n    <input class="text-field__input" placeholder="Enter last name">\n  </div>\n  <div class="text-field__helper">Example of outlined variant</div>\n</div>\n```',
     },
   },
 };
@@ -205,18 +198,19 @@ Outlined.parameters = {
 export const WithIcons = {
   args: {
     label: 'Search',
-    icon: '🔍',
-    trailingIcon: '<span class="material-symbols-outlined list__icon">search</span>',
+    icon: '<span class="material-symbols-outlined">search</span>',
+    trailingIcon: '<span class="material-symbols-outlined icon--primary">star</span>',
     placeholder: 'Type to search...',
   },
 };
 WithIcons.parameters = {
   docs: {
     description: {
-      story: '**Text field with both leading and trailing icons.**\n\n```html\n<span class="material-symbols-outlined list__icon">search</span>\n<input ...>\n<span class="material-symbols-outlined list__icon">star</span>\n```',
+      story: '**Text field with both leading and trailing icons.**\n\n```html\n<div class="text-field text-field--filled">\n  <label class="text-field__label">Search</label>\n  <div class="text-field__input-wrapper">\n    <span class="text-field__icon">\n      <span class="material-symbols-outlined">star</span>\n    </span>\n    <input class="text-field__input" placeholder="Type to search...">\n    <span class="text-field__trailing-icon">\n      <span class="material-symbols-outlined">star</span>\n    </span>\n  </div>\n</div>\n```',
     },
   },
 };
+
 
 export const ErrorState = {
   args: {
@@ -229,7 +223,7 @@ export const ErrorState = {
 ErrorState.parameters = {
   docs: {
     description: {
-      story: '**Error state** with red outline and helper message.\n\n```html\n<div class="text-field text-field--error">...</div>\n```',
+      story: '**Error state** with red outline and helper message.\n\n```html\n<div class="text-field text-field--error">\n  <label class="text-field__label">Email</label>\n  <div class="text-field__input-wrapper">\n    <input class="text-field__input" placeholder="Enter your email" value="invalid@">\n  </div>\n  <div class="text-field__helper">Invalid email address</div>\n</div>\n```',
     },
   },
 };
@@ -245,7 +239,7 @@ export const Disabled = {
 Disabled.parameters = {
   docs: {
     description: {
-      story: '**Disabled text field** with muted styling and no interaction.\n\n```html\n<div class="text-field text-field--disabled">...</div>\n```',
+      story: '**Disabled text field** with muted styling and no interaction.\n\n```html\n<div class="text-field text-field--disabled">\n  <label class="text-field__label">Username</label>\n  <div class="text-field__input-wrapper">\n    <input class="text-field__input" placeholder="readonly_user" disabled>\n  </div>\n  <div class="text-field__helper">This field is disabled</div>\n</div>\n```',
     },
   },
 };
@@ -261,8 +255,7 @@ export const WithTextarea = {
 WithTextarea.parameters = {
   docs: {
     description: {
-      story: '**Multiline variant** using a `<textarea>` field instead of input.\n\n```html\n<textarea class="text-field__input"></textarea>\n```',
+      story: '**Multiline variant** using a `<textarea>` field instead of input.\n\n```html\n<div class="text-field text-field--filled">\n  <label class="text-field__label">Message</label>\n  <div class="text-field__input-wrapper">\n    <textarea class="text-field__input" placeholder="Write your message here..."></textarea>\n  </div>\n  <div class="text-field__helper">Use Enter for line break</div>\n</div>\n```',
     },
   },
 };
-

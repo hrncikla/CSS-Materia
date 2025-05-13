@@ -38,7 +38,7 @@ export default {
     disabled: { control: 'boolean' },
   },
   args: {
-    label: 'Tlačítko',
+    label: 'Button',
     variant: 'filled',
     size: 'medium',
     icon: false,
@@ -107,7 +107,7 @@ Filled.parameters = {
 **Filled button** – used for primary actions.
 
 \`\`\`html
-<button class="button button--filled">Tlačítko</button>
+<button class="button button--filled">Button</button>
 \`\`\`
       `,
     },
@@ -122,7 +122,7 @@ Tonal.parameters = {
 **Tonal button** – secondary alternative to filled.
 
 \`\`\`html
-<button class="button button--tonal">Tlačítko</button>
+<button class="button button--tonal">Button</button>
 \`\`\`
       `,
     },
@@ -137,7 +137,7 @@ Elevated.parameters = {
 **Elevated button** – medium emphasis button on low-contrast backgrounds.
 
 \`\`\`html
-<button class="button button--elevated">Tlačítko</button>
+<button class="button button--elevated">Button</button>
 \`\`\`
       `,
     },
@@ -152,7 +152,7 @@ Outlined.parameters = {
 **Outlined button** – secondary low emphasis action.
 
 \`\`\`html
-<button class="button button--outlined">Tlačítko</button>
+<button class="button button--outlined">Button</button>
 \`\`\`
       `,
     },
@@ -167,7 +167,7 @@ Text.parameters = {
 **Text button** – minimal emphasis, often inline or in toolbars.
 
 \`\`\`html
-<button class="button button--text">Tlačítko</button>
+<button class="button button--text">Button</button>
 \`\`\`
       `,
     },

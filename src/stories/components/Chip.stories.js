@@ -147,7 +147,6 @@ Selected.parameters = {
       story: [
         'A chip in a selected state using the class `.chip--selected`.',
         '',
-        '**HTML Example:**',
         '```html',
         '<div class="chip chip--selected">Selected</div>',
         '```'
@@ -169,7 +168,6 @@ Disabled.parameters = {
       story: [
         'A non-interactive chip with reduced opacity using `.chip--disabled`.',
         '',
-        '**HTML Example:**',
         '```html',
         '<div class="chip chip--disabled">Disabled</div>',
         '```'
@@ -192,7 +190,6 @@ WithIcons.parameters = {
       story: [
         'A chip with both a leading and trailing icon, using `.chip__icon` and `.chip__trailing`.',
         '',
-        '**HTML Example:**',
         '```html',
         '<div class="chip">',
         '  <span class="chip__icon">★</span>',
