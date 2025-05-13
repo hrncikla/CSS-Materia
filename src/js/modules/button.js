@@ -1,7 +1,7 @@
 import '../../css/main.css';
 
 export const createButton = ({
-  label = 'Tlačítko',
+  label = 'Button',
   variant = 'filled',
   size = 'medium',
   icon = false,

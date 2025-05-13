@@ -1,11 +1,9 @@
-import '../../css/main.css';
-
 import { createIcon } from './icon';
 import { createButton } from './button';
 
 export const createCard = ({
   variant = '',
-  mediaSrc = '',
+  media = false,
   icon = '',
   title = 'Card title',
   subtitle = '',
@@ -16,14 +14,21 @@ export const createCard = ({
   card.classList.add('card');
   if (variant) card.classList.add(`card--${variant}`);
 
-  if (mediaSrc) {
-    const media = document.createElement('img');
-    media.src = mediaSrc;
-    media.alt = '';
-    media.className = 'card__media';
-    card.appendChild(media);
+  // === Media Section ===
+  if (media) {
+    const mediaEl = document.createElement('div');
+    mediaEl.className = 'card__media';
+    mediaEl.style.backgroundColor = 'var(--md-sys-color-primary-container)';
+    mediaEl.style.height = '200px';
+    mediaEl.style.display = 'flex';
+    mediaEl.style.alignItems = 'center';
+    mediaEl.style.justifyContent = 'center';
+    mediaEl.style.color = 'var(--md-sys-color-on-primary-container)';
+    mediaEl.textContent = 'Media';
+    card.appendChild(mediaEl);
   }
 
+  // === Header Section ===
   if (icon || title || subtitle) {
     const header = document.createElement('div');
     header.className = 'card__header';
@@ -59,6 +64,7 @@ export const createCard = ({
     card.appendChild(header);
   }
 
+  // === Content Section ===
   if (content) {
     const contentEl = document.createElement('div');
     contentEl.className = 'card__content';
@@ -66,11 +72,12 @@ export const createCard = ({
     card.appendChild(contentEl);
   }
 
+  // === Actions Section ===
   if (actions.length > 0) {
     const actionsEl = document.createElement('div');
     actionsEl.className = 'card__actions';
 
-    actions.forEach(({ label, onClick = () => { } }) => {
+    actions.forEach(({ label, onClick = () => {} }) => {
       const btn = createButton({
         label,
         variant: 'text',

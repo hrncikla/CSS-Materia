@@ -1,9 +1,9 @@
 @use "../tokens/system-tokens" as *;
 @use "../mixins/typography" as *;
 
-// ========================================================
-// CARD COMPONENT
-// ========================================================
+// =============================
+// Card Component
+// =============================
 
 .card {
   display: flex;
@@ -11,10 +11,11 @@
   background-color: var(--md-sys-color-surface);
   border-radius: var(--md-sys-shape-corner-medium);
   box-shadow: var(--md-sys-elevation-1);
-  padding: var(--md-sys-space-medium);
+  padding: var(--md-sys-space-large);
   color: var(--md-sys-color-on-surface);
   overflow: hidden;
-  max-width: 860px;
+  max-width: 360px;
+  gap: var(--md-sys-space-small);
 
   &--outlined {
     box-shadow: none;
@@ -32,59 +33,65 @@
     object-fit: cover;
     max-height: 200px;
     margin-bottom: var(--md-sys-space-small);
+    border-top-left-radius: var(--md-sys-shape-corner-medium);
+    border-top-right-radius: var(--md-sys-shape-corner-medium);
   }
 
   &__header {
     display: flex;
     align-items: center;
     gap: var(--md-sys-space-small);
-    margin-bottom: var(--md-sys-space-small);
-    padding-inline: var(--md-sys-space-small);
 
     &-text {
       flex: 1;
+      padding: 0;
     }
 
     &-title {
       @include typography("title-large");
+      margin: 0;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
     }
 
     &-subtitle {
       @include typography("body-small");
       color: var(--md-sys-color-on-surface-variant);
+      margin: 0;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
     }
   }
 
-  &__icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    padding: var(--md-sys-space-medium);
-    background-color: var(--md-sys-color-primary-container);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--md-sys-color-on-primary-container);
-    font-size: 1.25rem;
-  }
-
   &__content {
-    @include typography(body-medium);
+    @include typography("body-medium");
     color: var(--md-sys-color-on-surface);
-    padding-inline: var(--md-sys-space-small);
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   &__actions {
     display: flex;
     justify-content: flex-end;
     gap: var(--md-sys-space-small);
-    margin-top: var(--md-sys-space-medium);
+    margin-top: var(--md-sys-space-small);
+    padding: 0 var(--md-sys-space-medium) var(--md-sys-space-medium);
   }
-}
 
-.card__content,
-.card__header-title,
-.card__header-subtitle {
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-sys-color-on-primary-container);
+    font-size: 1.25rem;
+    margin-inline-end: var(--md-sys-space-small);
+  }
 }
