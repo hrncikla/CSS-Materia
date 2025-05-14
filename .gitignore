@@ -1,0 +1,11 @@
+node_modules/
+
+dist/
+build/
+storybook-static/
+
+.sass-cache/
+*.log
+.env
+.DS_Store
+Thumbs.db
