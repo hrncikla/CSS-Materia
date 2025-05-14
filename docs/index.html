@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="./css/materia.min.css" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Materia</title>
+    <link rel="stylesheet" href="./css/materia.min.css" />
+  </head>
+  <body>
+    <div class="container" style="width: max-content;">
+      <div class="flex">
+        <div style="width: 400px;">
+          <h1 class="display-large mt-5xlarge" style="color: var(--md-sys-color-primary);">
+            My Materia
+          </h1>
+        </div>
 
-
-
-  <title>My Materia</title>
-</head>
-<body>
-  <h1>Welcome to My Materia</h1>
-  <p>This is the main CSS for your project.</p>
-  <button class="button button--tonal">Button</button>
-</body>
+        <div class="card card--filled m-5xlarge" style="max-width: fit-content;">
+          <div class="card__header">
+            <div class="card__header-text">
+              <h1 class="card__header-title display-large">My Materia</h1>
+              <p class="card__header-subtitle display-medium">
+                Modern CSS framework based on Material Design 3
+              </p>
+            </div>
+          </div>
+          <div class="card__content">
+            <p>
+              This is a test page to demonstrate the basic components and styles provided by the My Materia framework.
+              Quickly build beautiful, consistent, and modern web interfaces with ease.
+            </p>
+            <div class="card__actions">
+              <button class="button button--filled">Get Started</button>
+              <button class="button button--text">Contact Us</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
