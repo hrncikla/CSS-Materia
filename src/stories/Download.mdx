@@ -1,60 +1,53 @@
+
 import { Meta } from "@storybook/blocks";
 
 <Meta title="Download & Setup" />
 
 # Download & Setup
 
-You can get started with My Materia by downloading the source files manually or by cloning the repo.
+You can get started with My Materia by cloning the official repository or downloading the source files manually.
 
-## 1. Download options
+---
 
-- **Download ZIP**: [Download latest release](https://example.com/materia.zip)  
-- **Clone via Git**:
+## 1. Clone the repository
+
+[GitHub Repository](https://github.com/hrncikla/CSS-Materia)
+
+To clone the latest version of My Materia from GitHub, run the following command in your terminal:
 
 ```bash
-git clone https://github.com/your-org/my-materia.git
+git clone https://github.com/hrncikla/CSS-Materia.git
 ```
 
-Then copy the `/materia` folder (or `scss/materia`) into your project.
+### Directory Structure
+
+This will create a local copy of the project with the following structure:
+
+```
+CSS-Materia/
+├── .storybook/      # Storybook configuration
+├── build/           # Compiled and minified CSS/JS files
+├── public/          # Static files for deployment
+├── src/             # Source files (SCSS, JS, components)
+├── .gitignore       # Git ignore rules
+├── LICENSE          # License file
+├── package-lock.json # Dependency lock file
+├── package.json     # Project dependencies and scripts
+└── README.md        # Project overview and setup instructions 
+```
+
+### Install Dependencies
+
+After cloning, navigate into the project directory and install the required packages:
+
+```bash
+cd CSS-Materia
+npm install
+```
 
 ---
 
-## 2. Vite SCSS setup (optional)
+## 2. Next Steps
 
-If you're using Vite, you can auto-import variables and mixins in all components by configuring `vite.config.js`:
+To continue, visit the [Get Started](./?path=/docs/get-started--docs) page for further instructions on using My Materia in your project.
 
-```js
-// vite.config.js
-import { defineConfig } from 'vite';
-import path from 'path';
-
-export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "@/scss/materia/tokens" as *;`
-      }
-    }
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    }
-  }
-});
-```
-
-This automatically injects your tokens into all `.scss` files, so you don't have to manually import them everywhere.
-
----
-
-## 3. Tip
-
-You can combine the SCSS setup with JavaScript init for interactivity:
-
-```js
-import { initMateria } from "../js/materia.js";
-initMateria();
-```
-
-Useful for ripple effects, animated inputs, etc.
