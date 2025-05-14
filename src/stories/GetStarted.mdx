@@ -11,7 +11,7 @@ You can use My Materia in two main ways:
 Simply copy the built CSS into your project and include it in your HTML:
 
 ```html
-<link rel="stylesheet" href="/css/materia.min.css" />
+<link rel="stylesheet" href="/build/css/materia.min.css" />
 ```
 
 ### b) Use SCSS (recommended for customization)
@@ -28,31 +28,25 @@ CSS-Materia/
 ├── public/                    
 ├── src/
 │  └── ...
+│  └── js/
 │  └── scss/
 │     └── main.scss
+│  └── index.html 
 ├── ...
 ```
+Then you can use src/index.html.
 
 **Option 2: Just SCSS Folder**  
-If you only need the core styles, you can copy just the `scss/` directory:
+If you only need the core styles, you can copy just the `scss/` directory and delete other folders:
 
 ```bash
-src/
- ├── scss/
- │    ├── tokens/
- │    ├── mixins/
- │    ├── layout/
- │    ├── components/
- │    └── base/
- │    └── main.scss
-```
-
-Then import it in your main SCSS file:
-
-```scss
-@use "materia/base";
-@use "materia/tokens" as tokens;
-@use "materia/components/button";
+CSS-Materia/ 
+├── build/           
+├── public/                    
+├── src/
+│  └── scss/
+│     └── main.scss
+│  └── index.html
 ```
 
 You can override tokens or mixins before importing components.
