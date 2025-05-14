@@ -1,4 +1,4 @@
-import "../build/css/main.css";
+import "../build/css/materia.min.css";
 
 /** @type { import('@storybook/html').Preview } */
 const preview = {
